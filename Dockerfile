@@ -19,13 +19,7 @@ RUN apt-get purge -y -q --auto-remove gcc make wget
 ADD runner.sh /usr/local/vpnserver/runner.sh
 RUN chmod 755 /usr/local/vpnserver/runner.sh
 
-#RUN mkdir -p /var/log/vpnserver/security_log &&\
-#        mkdir /var/log/vpnserver/packet_log &&\
-#        mkdir /var/log/vpnserver/server_log &&\
-#        ln -s /var/log/vpnserver/*_log /usr/local/vpnserver/
-
 
 EXPOSE 443/tcp 992/tcp 1194/tcp 1194/udp 5555/tcp
 
-# ENTRYPOINT ["/usr/local/vpnserver/vpnserver", "execsvc"]
 ENTRYPOINT ["/usr/local/vpnserver/runner.sh"]
