@@ -20,6 +20,6 @@ ADD runner.sh /usr/local/vpnserver/runner.sh
 RUN chmod 755 /usr/local/vpnserver/runner.sh
 
 
-EXPOSE 443/tcp 992/tcp 1194/tcp 1194/udp 5555/tcp
+EXPOSE 443/tcp 992/tcp 1194/tcp 1194/udp 5555/tcp 500/udp 4500/udp
 
 ENTRYPOINT ["/usr/local/vpnserver/runner.sh"]
