@@ -1,21 +1,21 @@
 # SoftEther VPN server
 
-FROM ubuntu:latest
+FROM yaronr/debian-wheezy
 MAINTAINER Frank Rosquin <frank.rosquin@gmail.com>
 
-ENV VERSION v4.12-9514-beta-2014.11.17
+ENV VERSION v4.15-9538-beta-2015.03.27
 WORKDIR /usr/local/vpnserver
 
 
 RUN apt-get update &&\
         apt-get -y -q install gcc make wget && \
         apt-get clean && \
-		rm -rf /var/cache/apt/* /var/lib/apt/lists/* && \
-		wget http://www.softether-download.com/files/softether/${VERSION}-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-${VERSION}-linux-x64-64bit.tar.gz -O /tmp/softether-vpnserver.tar.gz &&\
+	rm -rf /var/cache/apt/* /var/lib/apt/lists/* && \
+	wget http://www.softether-download.com/files/softether/${VERSION}-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-${VERSION}-linux-x64-64bit.tar.gz -O /tmp/softether-vpnserver.tar.gz &&\
         tar -xzvf /tmp/softether-vpnserver.tar.gz -C /usr/local/ &&\
         rm /tmp/softether-vpnserver.tar.gz &&\
-		make i_read_and_agree_the_license_agreement &&\
-		apt-get purge -y -q --auto-remove gcc make wget
+	make i_read_and_agree_the_license_agreement &&\
+	apt-get purge -y -q --auto-remove gcc make wget
 
 ADD runner.sh /usr/local/vpnserver/runner.sh
 RUN chmod 755 /usr/local/vpnserver/runner.sh

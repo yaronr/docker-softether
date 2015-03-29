@@ -15,7 +15,7 @@ fi
 ln -s /var/log/vpnserver/*_log /usr/local/vpnserver/
 
 echo "Taking a nap, to allow network to properly set up.."
-sleep 20
+sleep 10
 
 echo "That was a good nap. Now to work..."
 
